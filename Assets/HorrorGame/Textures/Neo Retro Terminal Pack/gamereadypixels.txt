@@ -1,0 +1,78 @@
+Thank you for purchasing the Retro Terminal Asset Pack! This pack is designed to provide a complete, plug-and-play visual solution for retro sci-fi, cyberpunk, and horror games.
+
+
+
+📦 PACKAGE CONTENTS
+Total Assets: 42
+
+1. Terminal Screens (12 Assets - JPG format)
+
+4 Surveillance & Radar Screens (Green Phosphor)
+
+4 Diagnostic & Data Matrix Screens (Amber-Orange)
+
+4 Tactical Wireframe Maps & Blueprints (Cyan)
+
+2. Industrial Signs & Decals (6 Assets - PNG format with transparency)
+
+Radiation, Biohazard, High Voltage, Toxic Skull, Emergency Exit, Hazard Stripes.
+
+3. Interactive World Elements (6 Assets - PNG format)
+
+Keypads, keycard slots, emergency buttons, toggle switches, analog knobs, status lights.
+
+4. Seamless Environment Textures (4 Assets - PNG format)
+
+Metal deck flooring (Diamond grip), padded wall insulation, ventilation grating, server racks.
+
+Note: These 4 textures are 100% tileable horizontally and vertically.
+
+5. Player HUD & Inventory Overlay (6 Assets - PNG format)
+
+Health bars, battery gauges, stamina frames, mini-map containers, inventory slots.
+
+6. Reticles & Cursors (8 Assets - PNG format)
+
+Crosshairs, target brackets, locking reticles, interaction icons.
+
+
+
+🛠️ HOW TO USE
+1. Importing Assets:
+
+Drop the asset folders directly into your preferred game engine (Unity, Godot, Unreal Engine, GameMaker, etc.).
+
+Crucial for Pixel Art/Lo-Fi Look: To prevent your engine from blurring the textures, change the texture Import Settings: Set the Filter Mode to Point (No Filter) or Nearest Neighbor, and set compression to None/High Quality.
+
+2. Slicing Sprite Sheets:
+
+Grid and sprite sheets are laid out symmetrically. You can easily slice them using your engine's built-in Sprite Editor using rectangular or grid slicing tools.
+
+3. Adding Text to Screens & HUD:
+
+All UI elements are intentionally textless.
+
+To display text or numbers, simply place a dynamic text UI component (such as UI Text, TextMeshPro, or a Label node) directly over the blank containers inside your game engine. This makes the pack completely compatible with localization and multiple languages.
+
+4. Using Seamless Textures:
+
+Apply the tileable textures to your 3D materials or 2D tilemaps. Ensure the texture wrap mode is set to Repeat (or Tile) to enable infinite scaling without visible seams.
+
+
+
+📜 LICENSE & TERMS OF USE
+Commercial Use: You are free to use these assets in any number of personal, educational, or commercial video game projects.
+
+Modification: You are allowed to modify, recolor, crop, or alter the assets to fit your game's technical requirements.
+
+Attribution: Credit is not mandatory, but greatly appreciated! (e.g., "UI Assets by [Your Store Name]").
+
+Restrictions: You are strictly prohibited from redistributing, sharing, sub-licensing, or reselling this asset pack—or any modified version of it—as standalone graphics, stock images, or source files on any marketplace.
+
+
+
+💬 SUPPORT & FEEDBACK
+If you encounter any issues, have technical questions, or want to request specific features or themes for future free updates, please leave a comment on the Itch.io product page or join our community.
+
+
+Good luck with your game development project!
