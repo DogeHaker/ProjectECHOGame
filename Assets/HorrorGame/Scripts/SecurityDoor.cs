@@ -34,6 +34,10 @@ public class SecurityDoor : MonoBehaviour
             // Check the centralized inventory array for the target string
             if (playerInv.HasItem(requiredItem))
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.doorOpenSFX);
+                }
                 isOpen = true;
                 if (uiNotifier != null) uiNotifier.DisplayMessage(doorSuccessMessage, 2.5f);
 

@@ -56,6 +56,10 @@ public class EnemyAI : MonoBehaviour
         switch (currentState)
         {
             case AIState.Patrolling:
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.StopChaseMusic();
+                }
                 Patrol();
 
                 if (distanceToPlayer <= detectionRadius && !IsPlayerHidden())
@@ -79,6 +83,10 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case AIState.Chasing:
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.StartChaseMusic();
+                }
                 Chase();
 
                 if (IsPlayerHidden())
@@ -134,6 +142,11 @@ public class EnemyAI : MonoBehaviour
     void TriggerJumpscareSequence()
     {
         Debug.LogWarning("💥 JUMPSCARE INITIALIZED.");
+
+        if (AudioManager.Instance != null)
+        {   
+            AudioManager.Instance.PlayJumpscare();
+        }
 
         // THE FIX: Completely kill the Android's momentum and turn off its physics brain
         if (agent != null)

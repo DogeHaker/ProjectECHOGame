@@ -168,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e4702d1b92f6347458ac64908205ede2, type: 2}
+  - {fileID: 2100000, guid: add5883ea9d3ec64fb855b3ee3b904a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,5 +264,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b35306c0955fe744bca667285cc50bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemName: Keycard3
+  itemName: Keycard #3
   triggersEmergencyOnPickup: 0

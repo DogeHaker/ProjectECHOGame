@@ -264,5 +264,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b35306c0955fe744bca667285cc50bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemName: Keycard2
+  itemName: Keycard #2
   triggersEmergencyOnPickup: 0

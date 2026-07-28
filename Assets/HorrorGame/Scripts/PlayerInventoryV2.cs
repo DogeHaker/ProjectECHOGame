@@ -22,6 +22,7 @@ public class PlayerInventoryV2 : MonoBehaviour
     public GameObject keycard1FloorPrefab;
     public GameObject keycard2FloorPrefab;
     public GameObject keycard3FloorPrefab;
+    public GameObject keycardMasterFloorPrefab;
     public Transform dropSpawnPoint; // Empty object forward from camera
 
     private FlashlightPower flashlightPowerScript;
@@ -86,7 +87,7 @@ public class PlayerInventoryV2 : MonoBehaviour
         {
             batteryHandModel.SetActive(false);
         }
-        if (currentItem == "Keycard1" || currentItem == "Keycard2" || currentItem == "Keycard3")
+        if (currentItem == "Keycard #1" || currentItem == "Keycard #2" || currentItem == "Keycard #3" || currentItem == "Master Core Key")
         {
             keycardHandModel.SetActive(true);
         }
@@ -102,6 +103,10 @@ public class PlayerInventoryV2 : MonoBehaviour
         {
             if (slots[i] == "Empty")
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.itemPickupSFX);
+                }
                 slots[i] = itemName;
                 UpdateEquippedItem();
                 return true;
@@ -125,13 +130,20 @@ public class PlayerInventoryV2 : MonoBehaviour
         string itemToDrop = slots[currentSlotIndex];
         if (itemToDrop == "Empty") return;
 
+        if (itemToDrop == "Master Core Key")
+        {
+            NotificationUI notifier = FindObjectOfType<NotificationUI>();
+            if (notifier != null) notifier.DisplayMessage("CANNOT DROP MISSION CRITICAL ITEM", 2.0f);
+            return;
+        }
+
         GameObject prefabToSpawn = null;
         if (itemToDrop == "Flashlight") prefabToSpawn = flashlightFloorPrefab;
         if (itemToDrop == "Battery") prefabToSpawn = batteryFloorPrefab;
-        if (itemToDrop == "Keycard1") prefabToSpawn = keycard1FloorPrefab;
-        if (itemToDrop == "Keycard2") prefabToSpawn = keycard2FloorPrefab;
-        if (itemToDrop == "Keycard3") prefabToSpawn = keycard3FloorPrefab;
-
+        if (itemToDrop == "Keycard #1") prefabToSpawn = keycard1FloorPrefab;
+        if (itemToDrop == "Keycard #2") prefabToSpawn = keycard2FloorPrefab;
+        if (itemToDrop == "Keycard #3") prefabToSpawn = keycard3FloorPrefab;
+        if (itemToDrop == "Master Core Key") prefabToSpawn = keycardMasterFloorPrefab;
         if (prefabToSpawn != null && dropSpawnPoint != null)
         {
             Instantiate(prefabToSpawn, dropSpawnPoint.position, dropSpawnPoint.rotation);

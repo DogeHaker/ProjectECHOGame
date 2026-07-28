@@ -36,6 +36,10 @@ public class LoreManager : MonoBehaviour
     // THIS IS THE METHOD LINKED TO YOUR CLICKABLE 'X' BUTTON
     public void CloseLoreWindow()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.terminalClickSFX);
+        }
         lorePanelRoot.SetActive(false); // Hide the overlay panel
 
         // 1. Unfreeze player camera looking

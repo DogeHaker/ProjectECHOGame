@@ -16,8 +16,11 @@ public class Flashlight : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             toggle = !toggle;
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.flashlightClickSFX);
+            }
             flashlightObject.SetActive(toggle);
-            //toggleSound.Play();
         }
     }
 }

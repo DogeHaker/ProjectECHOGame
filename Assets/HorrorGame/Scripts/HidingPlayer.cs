@@ -54,6 +54,12 @@ public class HidingPlayer : MonoBehaviour
         playerIsInside = true;
         canExitLocker = false; // Lock out the exit key instantly
 
+        // PLAY LOCKER SFX ON ENTRY
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.lockerDoorSFX);
+        }
+
         if (playerInv != null) playerInv.isHidden = true;
 
         CharacterController controller = playerCapsule.GetComponent<CharacterController>();
@@ -77,6 +83,13 @@ public class HidingPlayer : MonoBehaviour
     {
         playerIsInside = false;
         canExitLocker = false; // Reset state
+
+        // PLAY LOCKER SFX ON EXIT
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.lockerDoorSFX);
+        }
+
         playerInv.isHidden = false;
 
         CharacterController controller = playerCapsule.GetComponent<CharacterController>();

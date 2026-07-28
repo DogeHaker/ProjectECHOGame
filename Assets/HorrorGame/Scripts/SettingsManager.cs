@@ -19,8 +19,8 @@ public class SettingsManager : MonoBehaviour
     void Start()
     {
         // Load saved values or set default baselines
-        float savedMusic = PlayerPrefs.GetFloat("SavedMusicVolume", 0f);
-        float savedSFX = PlayerPrefs.GetFloat("SavedSFXVolume", 0f);
+        float savedMusic = PlayerPrefs.GetFloat("SavedMusicVolume", -15f);
+        float savedSFX = PlayerPrefs.GetFloat("SavedSFXVolume", -10f);
         float savedSens = PlayerPrefs.GetFloat("MouseSensitivity", 100f); // Default 100 speed
 
         if (musicSlider != null) musicSlider.value = savedMusic;

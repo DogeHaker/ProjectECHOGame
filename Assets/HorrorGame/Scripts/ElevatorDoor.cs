@@ -23,6 +23,10 @@ public class ElevatorDoor : MonoBehaviour
     {
         if (!isOpening)
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.doorOpenSFX);
+            }
             isOpening = true;
             Debug.Log("The system authorized the door release protocol.");
         }
