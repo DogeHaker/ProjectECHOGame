@@ -18602,6 +18602,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6239389156314401675, guid: 41ab67442c1f2994bbcdb0742353cf1d, type: 3}
+      propertyPath: triggersEmergencyOnPickup
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7853279904302106919, guid: 41ab67442c1f2994bbcdb0742353cf1d, type: 3}
       propertyPath: m_Name
       value: KeycardMaster
@@ -19362,6 +19366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca07861cb2c2e74f85e46d7f9c490e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerMovement: {fileID: 292882626}
+  mouseLookScript: {fileID: 292882628}
   timeRemaining: 120
   emergencyScript: {fileID: 1263240811}
 --- !u!4 &1143909395

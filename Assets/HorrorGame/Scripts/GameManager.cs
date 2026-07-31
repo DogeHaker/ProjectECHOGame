@@ -4,6 +4,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public PlayerMovement playerMovement;
+    public MouseMovement mouseLookScript;
 
     [Header("Emergency System")]
     public float timeRemaining = 120f;
@@ -68,7 +70,18 @@ public class GameManager : MonoBehaviour
     {
         isCountdownActive = false;
         if (emergencyScript != null) emergencyScript.StopEmergencyDisplay();
-        Debug.LogError("GAME OVER: Purge sequence finalized. Android intercept teams deployed.");
-        // FUTURE: Load bad ending scene asset array here
+        if (playerMovement != null) playerMovement.enabled = false;
+        if (mouseLookScript != null) mouseLookScript.enabled = false;
+
+        if (GameOverManager.Instance != null)
+        {
+            GameOverManager.Instance.TriggerGameOverSequence();
+        }
+
+        NotificationUI notifier = FindObjectOfType<NotificationUI>();
+        if (notifier != null)
+        {
+            notifier.DisplayMessage("SYSTEM FAILURE: SECURITY UNIT INTERCEPTED AGENT.\n[Press Escape to Quit]", 999f);
+        }
     }
 }
