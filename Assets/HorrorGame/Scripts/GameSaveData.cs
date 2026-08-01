@@ -23,4 +23,6 @@ public class GameSaveData
     // Enemy Position Tracking
     public float eX, eY, eZ;
     public int enemyWaypointIndex;
+
+    public List<string> usedSaveTerminalIDs = new List<string>();
 }

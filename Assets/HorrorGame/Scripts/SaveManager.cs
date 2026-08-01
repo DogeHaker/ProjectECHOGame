@@ -9,6 +9,7 @@ public class SaveManager : MonoBehaviour
 
     public static List<string> OpenedDoorRegistry = new List<string>();
     public static List<string> SolvedKeypadRegistry = new List<string>();
+    public static List<string> UsedSaveTerminals = new List<string>(); // REGISTRY ADDED HERE!
 
     public static int currentActiveSlot = 1;
 
@@ -34,6 +35,7 @@ public class SaveManager : MonoBehaviour
             Debug.LogWarning("Fresh run sequence authorized. Wiping session history registries clean.");
             OpenedDoorRegistry.Clear();
             SolvedKeypadRegistry.Clear();
+            UsedSaveTerminals.Clear(); // Wipes spent terminals for new runs
         }
     }
 
@@ -80,6 +82,7 @@ public class SaveManager : MonoBehaviour
         // 3. Environmental Registries
         data.openedDoorIDs = new List<string>(OpenedDoorRegistry);
         data.solvedKeypadIDs = new List<string>(SolvedKeypadRegistry);
+        data.usedSaveTerminalIDs = new List<string>(UsedSaveTerminals); // Saves exhausted terminals to disk
 
         // 4. Write to disk
         string targetPath = GetSavePathForSlot(currentActiveSlot);
@@ -139,6 +142,20 @@ public class SaveManager : MonoBehaviour
             if (SolvedKeypadRegistry.Contains(keypad.puzzleUniqueID))
             {
                 keypad.ForceSolveOnLoad();
+            }
+        }
+
+        // 6. Restore Exhausted Save Terminals
+        if (data.usedSaveTerminalIDs != null)
+        {
+            UsedSaveTerminals = new List<string>(data.usedSaveTerminalIDs);
+            SaveTerminal[] allTerminals = FindObjectsOfType<SaveTerminal>();
+            foreach (SaveTerminal terminal in allTerminals)
+            {
+                if (UsedSaveTerminals.Contains(terminal.terminalUniqueID))
+                {
+                    terminal.ForceDepleteOnLoad();
+                }
             }
         }
 

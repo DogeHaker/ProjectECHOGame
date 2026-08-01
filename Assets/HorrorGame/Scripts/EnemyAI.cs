@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.AI; // CRITICAL: This gives us access to Unity's AI Pathfinding!
+using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))] // Automatically adds the component if missing
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
 {
     public enum AIState { Patrolling, Chasing, Jumpscaring }
@@ -27,14 +27,27 @@ public class EnemyAI : MonoBehaviour
     public PlayerMovement playerMovement;
     public MouseMovement mouseLookScript;
 
+    [Header("Audio & Spatial Footsteps")]
+    public AudioSource enemyAudioSource; // AudioSource with 3D Spatial Blend enabled
+    public AudioClip footstepSFX;
+    public float patrolStepInterval = 0.8f; // Pace while patrolling
+    public float chaseStepInterval = 0.4f;  // Faster pace while chasing
+    private float footstepTimer;
+
     private Transform playerTransform;
     private PlayerInventoryV2 playerInventory;
-    private NavMeshAgent agent; // Stores our new pathfinding brain link
+    private NavMeshAgent agent; // Stores our pathfinding brain link
 
     void Start()
     {
         // Cache our pathfinding component
         agent = GetComponent<NavMeshAgent>();
+
+        // Auto-fetch AudioSource if not manually assigned in Inspector
+        if (enemyAudioSource == null)
+        {
+            enemyAudioSource = GetComponent<AudioSource>();
+        }
 
         PlayerInventoryV2 playerScript = FindObjectOfType<PlayerInventoryV2>();
         if (playerScript != null)
@@ -114,10 +127,13 @@ public class EnemyAI : MonoBehaviour
 
         Transform targetWaypoint = waypoints[currentWaypointIndex];
 
-        // Instead of manual positioning math, we just tell the pathfinding brain where to walk!
+        // Tell pathfinding brain where to walk
         agent.SetDestination(targetWaypoint.position);
 
-        // Check if the agent has reached the waypoint target node destination
+        // Play 3D footsteps at patrol cadence
+        HandleFootsteps(patrolStepInterval);
+
+        // Check if agent reached waypoint target node destination
         if (!agent.pathPending && agent.remainingDistance < waypointThreshold)
         {
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
@@ -126,8 +142,33 @@ public class EnemyAI : MonoBehaviour
 
     void Chase()
     {
-        // Constantly recalculate the shortest route along the blue mesh floor to catch the player
+        // Constantly recalculate shortest route along blue mesh floor to catch player
         agent.SetDestination(playerTransform.position);
+
+        // Play 3D footsteps at faster chase cadence
+        HandleFootsteps(chaseStepInterval);
+    }
+
+    void HandleFootsteps(float stepInterval)
+    {
+        // Only trigger steps if the enemy is actively moving on the NavMesh
+        if (agent != null && agent.velocity.sqrMagnitude > 0.1f)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                if (enemyAudioSource != null && footstepSFX != null)
+                {
+                    enemyAudioSource.PlayOneShot(footstepSFX);
+                }
+                footstepTimer = stepInterval;
+            }
+        }
+        else
+        {
+            // Ready up timer so step plays immediately when movement starts
+            footstepTimer = 0f;
+        }
     }
 
     bool IsPlayerHidden()
@@ -144,35 +185,35 @@ public class EnemyAI : MonoBehaviour
         Debug.LogWarning("💥 JUMPSCARE INITIALIZED.");
 
         if (AudioManager.Instance != null)
-        {   
+        {
             AudioManager.Instance.PlayJumpscare();
         }
 
-        // THE FIX: Completely kill the Android's momentum and turn off its physics brain
+        // Kill momentum and disable physics brain to prevent sliding
         if (agent != null)
         {
             agent.velocity = Vector3.zero; // Instantly drops speed to absolute 0
-            agent.isStopped = true;        // Stops the path navigation
-            agent.enabled = false;         // Disables the component so it cannot slide or drift
+            agent.isStopped = true;        // Stops path navigation
+            agent.enabled = false;         // Disables component so it cannot slide or drift
         }
 
-        // 1. Permanently freeze the player's inputs so they can't run away or look away
+        // 1. Permanently freeze player inputs
         if (playerMovement != null) playerMovement.enabled = false;
         if (mouseLookScript != null) mouseLookScript.enabled = false;
 
-        // 2. Force the Player's camera to instantly snap and look directly at the enemy's face target
+        // 2. Force player camera to snap directly to enemy face target
         if (playerCamera != null && enemyFaceTarget != null)
         {
             playerCamera.LookAt(enemyFaceTarget.position);
         }
 
-        // Triggers the black death screen after 2.5 seconds
+        // Trigger black death screen after 2.5 seconds
         if (GameOverManager.Instance != null)
         {
             GameOverManager.Instance.TriggerGameOverSequence(2.5f);
         }
 
-        // 3. Display the technical system failure notification
+        // 3. Display technical system failure notification
         NotificationUI notifier = FindObjectOfType<NotificationUI>();
         if (notifier != null)
         {
