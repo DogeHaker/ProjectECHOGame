@@ -526,7 +526,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189812881}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -933,7 +933,6 @@ RectTransform:
   - {fileID: 1045823532}
   - {fileID: 452855702}
   - {fileID: 1178421485}
-  - {fileID: 721116917}
   m_Father: {fileID: 1836264861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1141,17 +1140,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721116916}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.0975375, y: 1.1250428, z: 1.546934}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 599019508}
+  m_Father: {fileID: 1071171161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1338, y: 495}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -2520.2, y: -248.61}
+  m_SizeDelta: {x: 200, y: 46.7728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721116918
 MonoBehaviour:
@@ -1173,7 +1172,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[WASD]Move|[E]Interact|[R]Swap Battery|[G]Drop'
+  m_text: 'Binds *Can''t change*
+
+
+    [W][A][S][D] to Move
+
+    [Mouse] to Look
+    Around
+
+    [E] to Interact
+
+    [R] to Swap Battery
+
+    [G] to Drop Item
+
+    [Esc]
+    to Open Menu (Ingame)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6246031b0809905428fe014ed590233c, type: 2}
   m_sharedMaterial: {fileID: 8760286158295791714, guid: 6246031b0809905428fe014ed590233c, type: 2}
@@ -1200,14 +1214,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1828,7 +1842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'V0.27.7
+  m_text: 'V0.01.08
 
     Created by Doge
 
@@ -3693,6 +3707,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6656407673787157890, guid: 47be6a3c55a2a534c97ec7d84af5c67b, type: 3}
       insertIndex: 0
+      addedObject: {fileID: 721116917}
+    - targetCorrespondingSourceObject: {fileID: 6656407673787157890, guid: 47be6a3c55a2a534c97ec7d84af5c67b, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 60672053}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47be6a3c55a2a534c97ec7d84af5c67b, type: 3}
