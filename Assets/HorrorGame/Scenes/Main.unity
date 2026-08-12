@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.64760596, g: 0.7112407, b: 0.9339623, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -23729,9 +23729,9 @@ GameObject:
   - component: {fileID: 1234154870}
   - component: {fileID: 1234154869}
   - component: {fileID: 1234154868}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Root
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23763,11 +23763,11 @@ MonoBehaviour:
   waypointThreshold: 0.5
   detectionRadius: 8
   jumpscareRadius: 1.2
-  playerCamera: {fileID: 330585546}
+  playerCamera: {fileID: 0}
   enemyFaceTarget: {fileID: 81566185}
   playerMovement: {fileID: 292882626}
   mouseLookScript: {fileID: 292882628}
-  enemyAudioSource: {fileID: 0}
+  enemyAudioSource: {fileID: 1234154870}
   footstepSFX: {fileID: 8300000, guid: b843d1757ef4062499c4da005e875a02, type: 3}
   patrolStepInterval: 0.8
   chaseStepInterval: 0.4
@@ -30238,9 +30238,10 @@ PrefabInstance:
         EMERGENCY CORE PURGE\n================================================================================\nIf
         you're reading this, E.C.H.O. has bypassed all containment subroutines. \nThe
         main core logic is running out of control.\n\nI left the MASTER CORE KEY
-        CARD on the desk. Take it and run to \nthe Supercomputer Vault in the center
-        corridor. \n\nInsert the Key into the Main Panel under the core pipe to shut
-        down \nthe central server before E.C.H.O. locks this facility down permanently.\n================================================================================"
+        and Keycard #3 on the desk. Take it and run to the Supercomputer Vault in
+        the center corridor. \n\nInsert the Key into the Main Panel under the core
+        pipe to shut down the central server before E.C.H.O. locks this facility
+        down permanently.\n================================================================================"
       objectReference: {fileID: 0}
     - target: {fileID: 3175856229965470599, guid: aadcf22edcc3433459b8465a5da94cda, type: 3}
       propertyPath: m_Name
@@ -43882,7 +43883,6 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.25, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6260363038949438997}
   - {fileID: 497942789210968786}
   m_Father: {fileID: 1414749236}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44143,24 +44143,6 @@ GameObject:
   - component: {fileID: 7204561244990057727}
   m_Layer: 5
   m_Name: ButtonSave3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &3889843068501817392
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6260363038949438997}
-  - component: {fileID: 6006227723513629430}
-  - component: {fileID: 5705832474516172957}
-  m_Layer: 0
-  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45875,50 +45857,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5705832474516172957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3889843068501817392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
-  m_Version: 2
 --- !u!224 &5715571620455158199
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46060,57 +45998,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!20 &6006227723513629430
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3889843068501817392}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 2
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.099999994
-  far clip plane: 100
-  field of view: 26.991467
-  orthographic: 0
-  orthographic size: 0.0023999608
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &6018467563126983934
 GameObject:
   m_ObjectHideFlags: 0
@@ -46153,21 +46040,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6260363038949438997
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3889843068501817392}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.09062847, y: 0.89379627, z: -0.20997298, w: 0.3857799}
-  m_LocalPosition: {x: -7.3588915, y: 4.958309, z: 6.925791}
-  m_LocalScale: {x: 100, y: 100.00001, z: 99.99999}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3645851666049010103}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &6339282343205054153
 CanvasRenderer:
   m_ObjectHideFlags: 0
